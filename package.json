@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "watch": "rollup -cw",
+    "build": "rollup -c",
+    "serve": "python3 -m http.server"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^10.0.1",
+    "rollup": "^3.9.1",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "rxbeach": "^2.3.0",
+    "rxjs": "^7.8.0"
+  },
+  "type": "module"
+}
