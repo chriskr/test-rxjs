@@ -10455,31 +10455,31 @@ createErrorClass(function (_super) {
 });
 
 const log = (...args) => {
-    const pre = document.querySelector("pre");
+    const pre = document.querySelector('pre');
     if (!pre)
         return;
-    pre.textContent += `${args.join(", ")}\n`;
+    pre.textContent += `${args.join(', ')}\n`;
 };
 // test
-const ONE = "ONE";
-const TWO = "TWO";
+const ONE = 'ONE';
+const TWO = 'TWO';
 const test = () => {
-    dist.action$.pipe(tap(({ type }) => log("before", type))).subscribe();
+    dist.action$.pipe(tap(({ type }) => log('before', type))).subscribe();
     dist.action$
         .pipe(filter(({ type }) => type === ONE), tap(() => dist.dispatchAction({ type: TWO, meta: {} })))
         .subscribe();
-    dist.action$.pipe(tap(({ type }) => log("after", type))).subscribe();
+    dist.action$.pipe(tap(({ type }) => log('after', type))).subscribe();
     dist.dispatchAction({ type: ONE, meta: {} });
 };
 // end test
 const displayCodeAndRunTest = async () => {
     try {
-        const res = await fetch("./script.ts");
+        const res = await fetch('./script.ts');
         const code = await res.text();
-        const snippet = code.match(new RegExp(/(?<=\/\/ test).*?(?=\/\/ end test)/, "s"));
+        const snippet = code.match(new RegExp(String.raw `(?<=// test).*?(?=// end test)`, 's'));
         if (snippet)
             log(snippet[0]);
-        log("log test():\n");
+        log('log test():\n');
         test();
     }
     catch (e) { }
